@@ -41,7 +41,9 @@ cp "$CURRENT_PATCH_PATH/OpenCentauri-bootstrap.tar.gz" ./app
 chmod 644 ./app/OpenCentauri-bootstrap.tar.gz
 
 echo Install OpenCentauri firmware public key
-cat ../../RESOURCES/KEYS/swupdate_public.pem > ./etc/swupdate_public.pem
+cp ../../RESOURCES/KEYS/swupdate_public.pem ./etc/swupdate_public.pem
+cp ../../RESOURCES/KEYS/swupdate_public.pem ./etc/swupdate_public_oc.pem
+cp ../../RESOURCES/KEYS/swupdate_public_cc.pem ./etc/swupdate_public_cc.pem
 
 echo Install OpenCentauri banner file
 cat "$CURRENT_PATCH_PATH/banner" > ./etc/banner
@@ -110,6 +112,10 @@ chmod 755 ./usr/sbin/mount_usb
 # Install 'mount_usb_daemon' script in /usr/sbin
 cat "$CURRENT_PATCH_PATH/mount_usb_daemon" > ./usr/sbin/mount_usb_daemon
 chmod 755 ./usr/sbin/mount_usb_daemon
+
+echo Setup uninstaller
+cp "$CURRENT_PATCH_PATH/uninstall.sh" ./app/uninstall.sh
+chmod 755 ./app/uninstall.sh
 
 # TODO: Fix swupdate_cmd.sh -i /mnt/exUDISK/update/update.swu -e stable,now_A_next_B -k /etc/swupdate_public.pem
 # Write log to /mnt/exUDISK/ instead of /mnt/UDISK
