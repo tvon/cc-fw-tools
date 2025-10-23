@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sleep 30
 iptables -A OUTPUT -d detectportal.firefox.com -j REJECT
 iptables -A OUTPUT -d www.msftconnecttest.com -j REJECT
 iptables -A OUTPUT -d www.apple.com -j REJECT
