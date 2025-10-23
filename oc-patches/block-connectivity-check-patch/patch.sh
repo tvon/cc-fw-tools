@@ -9,7 +9,7 @@ set -e
 
 cp "$CURRENT_PATCH_PATH/block-connectivity-checks.sh" "$SQUASHFS_ROOT/app/block-connectivity-checks.sh"
 chmod a+x "$SQUASHFS_ROOT/app/block-connectivity-checks.sh"
-echo "sh -c \"sleep 10; while [ 1 ]; do /app/block-connectivity-checks.sh; sleep 60; done\" &" >> "$SQUASHFS_ROOT/etc/rc.local"
+echo "/app/block-connectivity-checks.sh &" >> "$SQUASHFS_ROOT/etc/rc.local"
 
 if [[ "$FW_VER" == "1.1.40" ]]; then
     echo "Applying binary patch for 1.1.40"
