@@ -6,7 +6,10 @@ if [ $UID -ne 0 ]; then
 fi
 
 set -e
-cat ./rc.local >> "$SQUASHFS_ROOT/etc/rc.local"
+
+cp "$CURRENT_PATCH_PATH/block-connectivity-checks.sh" "$SQUASHFS_ROOT/app/block-connectivity-checks.sh"
+chmod a+x "$SQUASHFS_ROOT/app/block-connectivity-checks.sh"
+echo "/app/block-connectivity-checks.sh &" >> "$SQUASHFS_ROOT/etc/rc.local"
 
 if [[ "$FW_VER" == "1.1.40" ]]; then
     echo "Applying binary patch for 1.1.40"
